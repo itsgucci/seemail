@@ -2,7 +2,7 @@ class EmailsController < ApplicationController
   # GET /emails
   # GET /emails.json
   def index
-    @emails = Email.all
+    @emails = Email.order('time DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,9 @@ class EmailsController < ApplicationController
   # GET /emails/new.json
   def new
     @email = Email.new
+    
+    @email.from = session[:from]
+    @email.to = session[:to]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +44,10 @@ class EmailsController < ApplicationController
   # POST /emails.json
   def create
     @email = Email.new(params[:email])
+    
+    #TODO clean!
+    session[:from] = @email.from
+    session[:to] = @email.to
 
     respond_to do |format|
       if @email.save
