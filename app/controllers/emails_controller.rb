@@ -65,6 +65,9 @@ class EmailsController < ApplicationController
   def update
     @email = Email.find(params[:id])
 
+    flash[:notice] = "Editing disabled"
+    redirect_to @email and return true    
+
     respond_to do |format|
       if @email.update_attributes(params[:email])
         format.html { redirect_to @email, notice: 'Email was successfully updated.' }
@@ -80,6 +83,10 @@ class EmailsController < ApplicationController
   # DELETE /emails/1.json
   def destroy
     @email = Email.find(params[:id])
+    
+    flash[:notice] = "Removal disabled"
+    redirect_to @email and return true
+    
     @email.destroy
 
     respond_to do |format|
