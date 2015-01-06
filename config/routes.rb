@@ -1,4 +1,5 @@
 Seemail::Application.routes.draw do
+  resources :cloudmailin, :only => :create
   resources :emails
 
 
