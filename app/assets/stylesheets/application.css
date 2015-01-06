@@ -19,6 +19,7 @@
 body {
   font-family:"Lucida Grande";
   font-size: 13px;
+  background: url("/assets/bground.png");
 }
 
 h1, h2, h3, h4, h5 {

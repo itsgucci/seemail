@@ -2,8 +2,16 @@ class EmailsController < ApplicationController
   # GET /emails
   # GET /emails.json
   def index
-    @emails = Email.order('time DESC')
-
+    @user = params[:u] || session[:u] || "drake@seemail.cc"
+    
+    session[:u] = params[:u] if session[:u] != params[:u] and !params[:u].nil?
+    
+    if params[:v] && params[:v] == "sm"
+      @emails = Email.order('time DESC').where(from:@user)
+    else
+      @emails = Email.order('time DESC').where(to:@user)
+    end
+      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @emails }
