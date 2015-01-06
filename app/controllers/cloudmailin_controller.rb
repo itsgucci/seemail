@@ -6,8 +6,10 @@ class CloudmailinController < ApplicationController
   def create
     @email = Email.new
     
-    @email.to = params[:headers]['To']
-    @email.from = params[:headers]['From']
+    # @email.to = params[:headers]['To']
+    # @email.from = params[:headers]['From']
+    @email.to = params[:envelope][:to]
+    @email.from = params[:envelope][:from]
     @email.subject = params[:headers]['Subject']
     @email.message = params[:plain]
 

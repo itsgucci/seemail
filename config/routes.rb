@@ -2,7 +2,6 @@ Seemail::Application.routes.draw do
   resources :cloudmailin, :only => :create
   resources :emails
 
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
