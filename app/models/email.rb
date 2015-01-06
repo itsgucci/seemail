@@ -5,7 +5,7 @@ class Email < ActiveRecord::Base
   before_create :set_time_to_now
   
   private
-  def :set_time_to_now
+  def set_time_to_now
     self.time = Time.now
   end
   
