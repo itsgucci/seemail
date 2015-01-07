@@ -34,8 +34,9 @@ class EmailsController < ApplicationController
   def new
     @email = Email.new
     
-    @email.from = session[:from]
-    @email.to = session[:to]
+    @email.from = params[:from] || session[:from]
+    @email.to = params[:to] || session[:to]
+    @email.subject = params[:subject]
 
     respond_to do |format|
       format.html # new.html.erb
