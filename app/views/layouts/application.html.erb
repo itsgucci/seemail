@@ -20,15 +20,15 @@
 		
 		<%= form_tag emails_path, :method => :get do |f| %>
 		<div class="field">
-		  <%= label_tag :user, "Email" %>
+		  <%= label_tag :user, "Use SEEmail as" %>
 		  <%= text_field_tag :u, @user %>
 		</div>
 		<% end %>
 
 		<div class="left_column">
 			<p><%= link_to 'Compose', new_email_path %></p>
-			<p><%= link_to "Inbox", emails_path(:u => @user, :v => :i) %></p>
-			<p><%= link_to "Sent mail", emails_path(:u => @user, :v => :sm) %></p>
+			<p><%= link_to "Inbox", emails_path(:v => :i) %></p>
+			<p><%= link_to "Sent mail", emails_path(:v => :sm) %></p>
 	
 		</div>
 		<div class="right_column">

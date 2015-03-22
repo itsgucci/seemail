@@ -2,9 +2,6 @@ class EmailsController < ApplicationController
   # GET /emails
   # GET /emails.json
   def index
-    @user = params[:u] || session[:u] || "drake@seemail.cc"
-    
-    session[:u] = params[:u] if session[:u] != params[:u] and !params[:u].nil?
     
     if params[:v] && params[:v] == "sm"
       @emails = Email.order('time DESC').where(from:@user)
