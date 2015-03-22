@@ -19,9 +19,18 @@
 body {
   font-family:"Lucida Grande";
   font-size: 13px;
-  background: url("/assets/bground.png");
+  //background: url("/assets/bground.png");
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: myriad;
+  font-family: futura;
+}
+
+.left_column {
+	float:left;
+	margin-right: 1.61em;
+}
+.right_column {
+	float:left;
+	margin-left: 1.61em;
 }

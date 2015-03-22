@@ -11,19 +11,37 @@
 	<%= link_to root_url do %>
 	<%= image_tag 'seemaillogo.png', :style => "height:100px;float:left;" %> 
 	<% end %>
-	<h1>CC Everyone</h1>
-	<h2>open communication</h2>
-	
-	<div style="clear:both"></div>
-	
-	<p>No privacy, no security, no censorship. <%= link_to "https://github.com/itsgucci/seemail" do %>SEEmail is free software.<% end %></p>
+	<h1>Public Email Service</h1>
+	<h2>CC Everyone with open communication</h2>
 	
 	<div style="clear:both"></div>
 
-<div style="background-color:#fff;display:inline-block">
+	<div style="background-color:#fff;display:inline-block">
+		
+		<%= form_tag emails_path, :method => :get do |f| %>
+		<div class="field">
+		  <%= label_tag :user, "Email" %>
+		  <%= text_field_tag :u, @user %>
+		</div>
+		<% end %>
+
+		<div class="left_column">
+			<p><%= link_to 'Compose', new_email_path %></p>
+			<p><%= link_to "Inbox", emails_path(:u => @user, :v => :i) %></p>
+			<p><%= link_to "Sent mail", emails_path(:u => @user, :v => :sm) %></p>
 	
-	<%= yield %>
-</div>
+		</div>
+		<div class="right_column">
+	
+			<%= yield %>
+			
+		</div>
+	</div>
+
+	<div style="clear:both"></div>
+	
+	<p><%= link_to "https://github.com/itsgucci/seemail" do %>SEEmail is free.<% end %> No privacy, no security, no censorship.</p>
+	
 
 </body>
 </html>
