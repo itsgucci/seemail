@@ -1,19 +1,25 @@
-<h2><%= params[:v] == "sm" ? "Sent Mail" : "Inbox" %> for <%= @user %></h2>
+<h2><%= params[:v] == "sm" ? "Sent Mail from" : "Inbox for" %> <%= @user %></h2>
 
 <table>
   <tr>
+	<% if params[:v] == "sm" %>
     <th>To</th>
+	<% else %>
     <th>From</th>
+	<% end %>
     <th>Subject</th>
     <th>Time</th>
   </tr>
 
 <% @emails.each do |email| %>
   <tr>
+  	<% if params[:v] == "sm" %>
     <td><%= email.to %></td>
+	<% else %>
     <td><%= email.from %></td>
+	<% end %>
     <td><%= link_to email.subject, email %></td>
-    <td><%= email.time %></td>
+    <td><%= nice_date_and_time email.time %></td>
   </tr>
 <% end %>
 </table>

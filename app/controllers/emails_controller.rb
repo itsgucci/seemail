@@ -57,7 +57,7 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to @email, notice: 'Email was successfully created.' }
+        format.html { redirect_to @email, notice: 'Email was sent successfully.' }
         format.json { render json: @email, status: :created, location: @email }
       else
         format.html { render action: "new" }
